@@ -27,8 +27,8 @@ def run_login():
 
         # 1. 检测ip
         page.goto('https://myip.ipip.net')  # 获取JSON格式的IP信息
-        response = page.content()  # 获取JSON字符串
         page.wait_for_load_state("networkidle")
+        response = page.content()  # 获取JSON字符串
         ip_data = page.text_content("body")##json.loads(response)  # 解析JSON字符串为字典
         print(ip_data)  # 打印IP地址
 
