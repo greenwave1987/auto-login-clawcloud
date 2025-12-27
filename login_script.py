@@ -25,8 +25,8 @@ def run_login():
         page = context.new_page()
 
         # 1. 检测ip
-        await page.goto('https://api.ipify.org?format=json')  # 获取JSON格式的IP信息
-        response = await page.content()  # 获取JSON字符串
+        page.goto('https://api.ipify.org?format=json')  # 获取JSON格式的IP信息
+        response = page.content()  # 获取JSON字符串
         ip_data = json.loads(response)  # 解析JSON字符串为字典
         print(ip_data['ip'])  # 打印IP地址
 
