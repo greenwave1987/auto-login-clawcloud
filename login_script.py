@@ -19,7 +19,7 @@ def run_login():
     print("🚀 [Step 1] 启动浏览器...")
     with sync_playwright() as p:
         # 启动浏览器 (headless=True 表示无头模式，适合服务器运行)
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=True,proxy={"server": "http://jz.hndz.qzz.io:19873"})
         # 设置大一点的分辨率，避免页面布局错乱
         context = browser.new_context(viewport={'width': 1920, 'height': 1080})
         page = context.new_page()
