@@ -26,8 +26,8 @@ def run_login():
         page = context.new_page()
 
         # 1. 检测ip
-        page.goto('https://myip.ipip.net')  # 获取JSON格式的IP信息
-        page.wait_for_load_state("networkidle")
+        page.goto('https://myip.ipip.net', timeout=60000)  # 获取JSON格式的IP信息
+        page.wait_for_load_state("networkidle", timeout=60000)
         response = page.content()  # 获取JSON字符串
         ip_data = page.text_content("body")##json.loads(response)  # 解析JSON字符串为字典
         print(ip_data)  # 打印IP地址
@@ -35,8 +35,8 @@ def run_login():
         # 2. 访问 ClawCloud 登录页
         target_url = "https://ap-northeast-1.run.claw.cloud/"
         print(f"🌐 [Step 2] 正在访问: {target_url}")
-        page.goto(target_url)
-        page.wait_for_load_state("networkidle")
+        page.goto(target_url, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         # 3. 点击 GitHub 登录按钮
         print("🔍 [Step 3] 寻找 GitHub 按钮...")
