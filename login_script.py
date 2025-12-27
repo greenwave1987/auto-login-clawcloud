@@ -26,7 +26,7 @@ def run_login():
         page = context.new_page()
 
         # 1. 检测ip
-        page.goto('https://api.ipify.org?format=json')  # 获取JSON格式的IP信息
+        page.goto('https://myip.ipip.net')  # 获取JSON格式的IP信息
         response = page.content()  # 获取JSON字符串
         page.wait_for_load_state("networkidle")
         ip_data = page.text_content("body")##json.loads(response)  # 解析JSON字符串为字典
