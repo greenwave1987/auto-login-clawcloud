@@ -28,6 +28,7 @@ def run_login():
         # 1. 检测ip
         page.goto('https://api.ipify.org?format=json')  # 获取JSON格式的IP信息
         response = page.content()  # 获取JSON字符串
+        page.wait_for_load_state("networkidle")
         ip_data = json.loads(response)  # 解析JSON字符串为字典
         print(ip_data['ip'])  # 打印IP地址
 
