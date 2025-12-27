@@ -29,8 +29,8 @@ def run_login():
         page.goto('https://api.ipify.org?format=json')  # 获取JSON格式的IP信息
         response = page.content()  # 获取JSON字符串
         page.wait_for_load_state("networkidle")
-        ip_data = json.loads(response)  # 解析JSON字符串为字典
-        print(ip_data['ip'])  # 打印IP地址
+        ip_data = page.text_content("body")##json.loads(response)  # 解析JSON字符串为字典
+        print(ip_data)  # 打印IP地址
 
         # 2. 访问 ClawCloud 登录页
         target_url = "https://ap-northeast-1.run.claw.cloud/"
